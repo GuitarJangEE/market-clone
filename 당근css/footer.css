@@ -20,8 +20,26 @@ footer {
   margin: 0px 10px 0px 10px;
   cursor: pointer;
 }
+@keyframes icons-둥-둥 {
+  0% {
+    transform: translateY(0px);
+  }
+  30% {
+    transform: translateY(-10px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
 .footer-icons__img {
   width: 30px;
+}
+.footer-icons:hover .footer-icons__img {
+  animation: 1s icons-둥-둥;
 }
 
 .footer-icons__font {
