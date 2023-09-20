@@ -19,6 +19,7 @@ header {
 .info-bar__time {
   font-size: 20px;
   font-weight: bold;
+  cursor: default;
 }
 /* 메뉴바 */
 .menu-bar {
@@ -35,8 +36,13 @@ header {
   font-size: 22px;
   padding-left: 8px;
 }
+.menu-bar__location div {
+  margin-right: 5px;
+  cursor: default;
+}
 .menu-bar__location img {
   width: 25px;
+  cursor: pointer;
 }
 .location-arrow {
   display: flex;
@@ -53,4 +59,5 @@ header {
 .menu-bar__icons img {
   margin: 5px;
   width: 30px;
+  cursor: pointer;
 }
