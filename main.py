@@ -55,6 +55,7 @@ async def eng(image:UploadFile,
                    INSERT INTO items(title,image,price,description,place,insertAT)
                    VALUES ('{title}','{image_big.hex()}',{price},'{description}','{place}','{insertAT}')
                    """)
+    server.id
     server.commit()
     return '시후'
 
@@ -70,6 +71,60 @@ async def get_img(id):
      
      return Response(content=bytes.fromhex(img_chan))
     
+    
+    
+    
+# @app.get('/users')
+# async def users_get():
+#     # 컬럼명 불러오기
+#     server.row_factory = sqlite3.Row
+#     # 현재 커서의 위치 업데이트
+#     cursor = server.cursor()
+
+#     # 모든 쿼리 데이터 가져오기
+#     main = cursor.execute(f"""
+#                           SELECT id FROM users
+#                           """).fetchall()
+#     print(main)
+#     return main
+# cursor.execute(f"SELECT * FROM users WHERE id = 'sihusdee'")
+# existing_user = cursor.fetchone()  # 존재하는 경우, 사용자 레코드를 가져옵니다.
+
+# if existing_user:
+#     # 이미 있는 아이디인 경우
+#     print('이미 존재하는 아이디입니다.')
+#     # 다른 처리를 수행하거나 에러 메시지를 반환할 수 있습니다.
+# else:
+#     # 아이디가 존재하지 않는 경우, 새로운 사용자를 추가합니다.
+#     # cursor.execute(f'''
+#     #                INSERT INTO users(id, password, name, email)
+#     #                VALUES ('{id}', '{password}', '{name}', '{email}')
+#     #                ''')
+#     # server.commit()
+#     print('회원 가입이 완료되었습니다.')
+
+
+@app.post('/signup')
+def signup(id:Annotated[str,Form()],
+           password:Annotated[str,Form()],
+           password_hagin:Annotated[str,Form()],
+           name:Annotated[str,Form()],
+           email:Annotated[str,Form()]):
+    cursor.execute(f"SELECT * FROM users WHERE id = '{id}'")
+    existing_user = cursor.fetchone() 
+    if existing_user:
+        return '아이디'
+    cursor.execute(f"SELECT * FROM users WHERE email = '{email}'")
+    existing_user2 = cursor.fetchone() 
+    if existing_user2:
+        return '이메일'
+    cursor.execute(f'''
+                   INSERT INTO users(id,password,name,email)
+                   VALUES ('{id}','{password}','{name}','{email}')
+                   ''')
+    # print(id,password_hagin)
+    server.commit()
+    return '싸인업'
 # @app.get('/items')
 # async def items_get():
 #     # 컬럼명 불러오기
