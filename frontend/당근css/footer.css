@@ -20,7 +20,7 @@ footer {
   margin: 0px 10px 0px 10px;
   cursor: pointer;
 }
-@keyframes icons-둥-둥 {
+@keyframes dong_dong {
   0% {
     transform: translateY(0px);
   }
@@ -39,7 +39,7 @@ footer {
   width: 30px;
 }
 .footer-icons:hover .footer-icons__img {
-  animation: 1s icons-둥-둥;
+  animation: 1s dong_dong;
 }
 
 .footer-icons__font {
